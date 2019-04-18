@@ -3,28 +3,39 @@ Adrià Ferrer
 
 DAFT, Barcelona 201
 
-### Overview
-Include the following points in your overview:
+### Introduction
+We have all tried to follow a diet. In fact if you quickly look online you'll find millions of miracle solutions and none of the work. We are looking for the best possible diet but it's right in front of our eyes: The Mediterranean Diet.
 
-* What data/business/research/personal question you would like to answer?
-Make sure the question description is human-friendly because you will have non-tech audience to see your final project presentation.
-* Did you understand the context for the question and the scientific or business application?
-* What is the hypothesis you would like to test in order to answer your question?
-Frame your hypothesis with statistical/data languages (i.e. define Null and Alternative Hypothesis). You can use formulas if you want but that is not required.
-* Did you consider whether the question could be answered with the available data?
+Although the mediterranean diet is well known, there is still a lot of confusion regarding what is it really composed of and it is not easy to find clear steps to follow it.
+
+On the other hand, although it is not a miracle diet, the results have been medicaly proven numerous times and having professional assistance to follow its eating principles always is a good help.
+
+Vimet (https://casavimet.com/) brings the Mediterranean Diet with professional support to your kitchen. Based on the principles of the most relevant medical doctors and nutricionists in the field, Vimet plans your weekly diet for you, so that you only have to buy the groceries and prepare the delicious yet healthy meals. It also comes with the weekly plan so you can plan ahead and follow the guidelines.
+
+### Overview
+Vimet has been up and running for almost a year now and after around 200 orders and 50 clients, they would like to answer some questions with the data collected during this time.
+
+* Is there any product that maximises sales?
+Statistical approach: H0: Mean sales higher for a specific product compared to the rest of products
+* Are there any specific user profiles?
+Statistical approach: Classifier with ML
+* Is there any item combination that maximises profit?
+Statistical approach: H0: Mean profit higher for a specific product compared to the rest of products
+
+All of these questions can be answered with the available data. The main potential issue will be the low amount of data as we only have around 200 orders and 50 clients.
+
+
 * How will you test your hypothesis?
 * How will you test your success?
 
-
-
-
 ### Data Preparation
-Overview:
-* What is your dataset about?
-* Where/how did you obtain your dataset?
-It can be either a public dataset or collected with API/web scraping.
-Provide a link if possible.
-* General description of the dataset such as the size, complexity, data types, etc.
+We will work with 2 datasets:
+* Oders register:
+(General description of the dataset such as the size, complexity, data types, etc.)
+* Items Register: 
+(General description of the dataset such as the size, complexity, data types, etc.)
+
+Both Datasets were provided by Vimet
 
 ### Data Ingestion & Database
 * If you downloaded a dataset (either public or private), describe where you downloaded it and include the command to load the dataset.
