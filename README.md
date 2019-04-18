@@ -2,7 +2,7 @@
 
 Adrià Ferrer
 
-DAFT, Barcelona 201
+DAFT, Barcelona 2019
 
 Kanban: https://app.asana.com/0/1119190122556879/board
 
