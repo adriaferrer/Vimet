@@ -13,6 +13,7 @@ Although the mediterranean diet is well known, there is still a lot of confusion
 
 On the other hand, although it is not a miracle diet, the results have been medicaly proven numerous times and having professional assistance to follow its eating principles always is a good help.
 
+   **Food items and proportions included in the Mediterranean Diet**
 ![Alter text](https://cdn.shopify.com/s/files/1/0018/5312/8748/files/alimentos-dieta-mediterranea_1024x1024.png?v=1549193784)
 Source: www.casavimet.com
 
