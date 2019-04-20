@@ -66,3 +66,5 @@ target/
 \.idea/
 
 secrets\.py
+
+DB_access/
