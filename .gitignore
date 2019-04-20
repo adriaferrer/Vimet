@@ -62,3 +62,5 @@ target/
 01\.Data_cleaning/\.ipynb_checkpoints/
 
 00\.Data/
+
+\.idea/
