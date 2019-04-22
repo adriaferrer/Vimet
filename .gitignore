@@ -68,3 +68,5 @@ target/
 secrets\.py
 
 DB_access/
+
+02\. Descriptive statistics/\.ipynb_checkpoints/
