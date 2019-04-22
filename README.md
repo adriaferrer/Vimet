@@ -48,7 +48,7 @@ During the ETL process we will transform the data so it can be properly saved in
 **Database structure**
 ![Alter text](https://github.com/adriaferrer/Vimet/blob/master/DBstructure.png)
 
-The customers table is not uploaded as it was not provided by Vimet to comply with GDPR as the data contains personal information of the customers. However it is included in the schema as it can be implemented in next steps.
+The customers table was not provided by Vimet to comply with GDPR as the data contains personal information of the customers. However some information directly linked to the clients has been included in the schema and with the implementation of the rest of the client information, it can be used in the future.
 The DataBase is hosted by Google Cloud.
 
 #### Database description
@@ -57,11 +57,9 @@ The DataBase is hosted by Google Cloud.
 * Customer: Customer Id (int)
 * Financial status: describes whether the order has been paid, refunded or not paid (str)
 * Fulfillment status: describes whether the order has been fulfilled or not (str)
-* Accepts marketing: describes whether the client has agreed to receive marketing (int)
 * Total: Total amount of the order (float)
 * Discount Amount: amount of discount applied to the order (float)
 * Shipping method: Describes the shipping method of the order (str)
-* Shipping City: Described the city the order was sent to (str)
 * Shipping Zip: Postal code where the order was sent to (str)
 * Payment method: identifies the payment method (str)
 * Refunded amount: total amount refunded to customer in that order (float)
@@ -76,6 +74,13 @@ The DataBase is hosted by Google Cloud.
 * Lineitem requires shipping: identifies whether the item requires shipping (int)
 * Lineitem taxable: defines whether the item is taxable (int)
 * Lineitem fulfillment status: defines whether the item was finally included in the order (str)
+
+**Customers**
+* Customer: customer id (int)
+* Accepts marketing: describes whether the client has agreed to receive marketing (int)
+* Shipping City: Described the city the order was sent to (str)
+* Customer_class: artificial variable created from the number of orders a client has made (str)
+
 
 ### Data Wrangling and Cleaning
 We start with the ETL process. The data is obtained via a csv provided by Vimet that includes all the information from the Shopify server. This process could be automatized in future steps. Once the data is obtained, we run a first script to transform and load the data to our SQL database.This transformation includes dividing the whole database into the corresponding tables.
