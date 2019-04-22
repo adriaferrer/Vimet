@@ -44,6 +44,8 @@ Both Datasets were provided by Vimet
 
 ### Data Ingestion & Database
 During the ETL process we will transform the data so it can be properly saved in an SQL database. The tables' structure is the following.
+
+**Database structure**
 ![Alter text](https://github.com/adriaferrer/Vimet/blob/master/DBstructure.png)
 
 The customers table is not uploaded as it was not provided by Vimet to comply with GDPR as the data contains personal information of the customers. However it is included in the schema as it can be implemented in next steps.
