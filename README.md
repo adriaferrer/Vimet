@@ -43,18 +43,68 @@ We will work with 2 datasets:
 Both Datasets were provided by Vimet
 
 ### Data Ingestion & Database
-* If you downloaded a dataset (either public or private), describe where you downloaded it and include the command to load the dataset.
-* If you obtain the data via API/web scraping, provide the scripts.
-* Provide a schema of your tables.
+During the ETL process we will transform the data so it can be properly saved in an SQL database. The tables' structure is the following.
+
+**Database structure**
+![Alter text](https://github.com/adriaferrer/Vimet/blob/master/DBstructure.png)
+
+The customers table is not uploaded as it was not provided by Vimet to comply with GDPR as the data contains personal information of the customers. However it is included in the schema as it can be implemented in next steps.
+The DataBase is hosted by Google Cloud.
+
+#### Database description
+**Orders**
+* Name: Identifier of the order (str)
+* Customer: Customer Id (int)
+* Financial status: describes whether the order has been paid, refunded or not paid (str)
+* Fulfillment status: describes whether the order has been fulfilled or not (str)
+* Accepts marketing: describes whether the client has agreed to receive marketing (int)
+* Total: Total amount of the order (float)
+* Discount Amount: amount of discount applied to the order (float)
+* Shipping method: Describes the shipping method of the order (str)
+* Shipping City: Described the city the order was sent to (str)
+* Shipping Zip: Postal code where the order was sent to (str)
+* Payment method: identifies the payment method (str)
+* Refunded amount: total amount refunded to customer in that order (float)
+* Discount code: Identifies whether the client used a discount code or not (int)
+* Notes: Notes provided by the customer to be applied in the order (str)
+
+**Items**
+* Name: Order Id (str)
+* Lineitem quatity: Quantity of the item in the order (int)
+* Lineitem name: description of the item (str)
+* Lineitem price: price of the item (float)
+* Lineitem requires shipping: identifies whether the item requires shipping (int)
+* Lineitem taxable: defines whether the item is taxable (int)
+* Lineitem fulfillment status: defines whether the item was finally included in the order (str)
 
 ### Data Wrangling and Cleaning
-Your full process of data wrangling and cleaning.
-* Document your workflow and thinking process.
+We start with the ETL process. The data is obtained via a csv provided by Vimet that includes all the information from the Shopify server. This process could be automatized in future steps. Once the data is obtained, we run a first script to transform and load the data to our SQL database.This transformation includes dividing the whole database into the corresponding tables.
+After this, each of the tables are transformed to enable analysing the data. From this step on, we will have data we can work with.
+
+Three main steps will follow in paralel:
+* Descriptive study of the data.
+* Hypothesis testing
+* Creation of a ML model.
+
+**Data Flow**
+![Alter text](https://github.com/adriaferrer/Vimet/blob/master/DataFlow.png)
+
+1) **Descriptive statistics**: In order to provide context for the analysis, a descriptive study will be performed on the data to identify the best-selling products, evolution of sales, etc.
+
+2) **Hypothesis testing**: A statistical test will be performed to test the hypothesis set in the overview secion.
+
+3) **ML model**: A clustering model will be trained and tested to cluster the type of customers.
 
 ### Data Analysis
-* Overview the general steps you will go through to analyze your data in order to test your hypothesis.
+
+#### Descriptive statistics
 * Document each step of your data exploration and analysis.
 * Print charts to demonstrate the effect of your work. Charts make your presentation look good too.
+
+#### Hypothesis testing
+* Overview the general steps you will go through to analyze your data in order to test your hypothesis.
+
+#### ML model
 * If you use ML in your final project, also describe your feature selection process.
 
 ### Model Training and Evaluation
