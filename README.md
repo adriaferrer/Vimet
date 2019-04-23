@@ -22,16 +22,14 @@ Vimet (https://casavimet.com/) brings the Mediterranean Diet to your kitchen ass
 ### Overview
 Vimet has been up and running for almost a year now and after around 200 orders and 50 clients, they would like to answer some questions with the data collected during this time.
 
-* Is there any product that maximises sales?
-Statistical approach: H0: Mean sales higher for a specific product compared to the rest of products (Method: depends on distr. t-Student?)
-* Are there any specific user profiles?
-Statistical approach: Classifier with ML (Method: MiniBatch K-Means)
-* Is there any item combination that maximises profit?
-Statistical approach: H0: Mean profit higher for a specific product compared to the rest of products (Method: depends on distr. t-Student?)
+* Is there any item combination that maximises sales?
+Recommender ML model
+* If we run out of an item, what should be the substitute?
+Recommender ML model
 
 All of these questions can be answered with the available data. The main potential issue will be the low amount of data as we only have around 200 orders and 50 clients.
 
-Success will be defined if any of the 3 questions have a statistically significant answer and/or a decision-making tool can be defined (e.g. descriptive data on best combinations of products)
+Success will be defined if any of the 2 questions have a statistically significant answer and/or a decision-making tool can be defined (e.g. descriptive data on best combinations of products)
 
 ### Data Preparation
 We will work with 2 datasets:
@@ -88,7 +86,6 @@ After this, each of the tables are transformed to enable analysing the data. Fro
 
 Three main steps will follow in paralel:
 * Descriptive study of the data.
-* Hypothesis testing
 * Creation of a ML model.
 
 **Data Flow**
@@ -96,9 +93,7 @@ Three main steps will follow in paralel:
 
 1) **Descriptive statistics**: In order to provide context for the analysis, a descriptive study will be performed on the data to identify the best-selling products, evolution of sales, etc.
 
-2) **Hypothesis testing**: A statistical test will be performed to test the hypothesis set in the overview secion.
-
-3) **ML model**: A clustering model will be trained and tested to cluster the type of customers.
+2) **ML model**: A clustering model will be trained and tested to cluster the type of customers.
 
 ### Data Analysis
 
