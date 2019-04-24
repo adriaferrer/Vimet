@@ -1,4 +1,5 @@
 import pandas as pd
+from scipy.spatial.distance import pdist, squareform
 
 
 def group_tags(df):
@@ -102,17 +103,64 @@ def food_matrix(df):
         row = []
 
         # We find the id's of the orders where this item appears
-        names_n = list(df[df['tags']==tag_n]['Name'])
+        names_n = list(df[df['tags'] == tag_n]['Name'])
         # For each element, we iterate through all the elements
         for tag_m in tags:
 
             # We find the id's of the orders where this second item appears
-            names_m = list(df[df['tags']==tag_m]['Name'])
+            names_m = list(df[df['tags'] == tag_m]['Name'])
             # We calculate the relative frequency of the second item over the times the first item apears
-            value=len(set(names_n).intersection(set(names_m)))/len(set(names_n).union(set(names_m)))
+            value = len(set(names_n).intersection(set(names_m)))/len(set(names_n).union(set(names_m)))
             row.append(value)
         matrix.append(row)
     matrix = pd.DataFrame(matrix, columns=tags)
     matrix['item'] = tags
     matrix = matrix.set_index('item')
     return matrix
+
+
+def user_recommender(df, level, customer_id):
+    """
+    Provides the similar customers based on the items bought
+    :param df: (DataFrame) Register of items bought. The features 'Vendor', 'tags', 'Customer' and 'Lineitem quantity
+    are required.
+    :param level: (int) level of similarity 1 is the closest and above 3 the similarity is no better than random
+    :param customer_id: (int) Customer id reference to find similarities from
+    :return: (list) customer id's with the level of similarity provided
+    """
+    # Drop outliers
+    df = df[df['Vendor'] != 'Gran Recapte']
+    df = df[df['tags'] != 'Cesta']
+
+    # Build similarity matrix
+    rec = df.groupby(['Customer', 'tags']).sum()[['Lineitem quantity']]
+    df_pivot = rec.pivot_table(index='tags', columns='Customer', values='Lineitem quantity').fillna(0)
+    similarity_matrix = squareform(pdist(df_pivot.T, 'cosine'))
+    similarity_df = pd.DataFrame(similarity_matrix, index=df_pivot.columns, columns=df_pivot.columns)
+
+    # Filter by level of similarity
+    result = similarity_df[similarity_df >= ((level-1)/10)]
+    result = result[result < level/10]
+
+    # Return the list or orders without the order provided
+    return list(result[result[customer_id] >= 0][customer_id].index)
+
+
+def items_for_you(df, similar_users, main_user):
+    """
+    Provides items that a customer never bought but is could like to buy as similar clients bought them previously
+    :param df:(DataFrame) Register of items bought. The features  'tags' and 'Customer' and are required.
+    :param similar_users: (list) id's of the similar users
+    :param main_user: Customer id reference to find similarities from
+    :return: (set) items the reference customer would buy
+    """
+    set_main = set(df[df['Customer'] == main_user]['tags'])
+    for user in similar_users:
+        items = []
+        if user != main_user:
+            set_user = set(df[df['Customer'] == user]['tags'])
+            items = set_main - set_user
+    if len(items) > 0:
+        return items
+    else:
+        return 'There is nothing to recommend'
