@@ -90,3 +90,29 @@ def matrix_best_items(df, tag_list):
     matrix['item'] = all_tags
     matrix = matrix.set_index('item')
     return matrix
+
+
+def food_matrix(df):
+    # We create a list with all the items we have
+    tags = list(df['tags'].unique())
+    # This will be the matrix to store the results
+    matrix = []
+    # We iterate through the list of items
+    for tag_n in tags:
+        row = []
+
+        # We find the id's of the orders where this item appears
+        names_n = list(df[df['tags']==tag_n]['Name'])
+        # For each element, we iterate through all the elements
+        for tag_m in tags:
+
+            # We find the id's of the orders where this second item appears
+            names_m = list(df[df['tags']==tag_m]['Name'])
+            # We calculate the relative frequency of the second item over the times the first item apears
+            value=len(set(names_n).intersection(set(names_m)))/len(set(names_n).union(set(names_m)))
+            row.append(value)
+        matrix.append(row)
+    matrix = pd.DataFrame(matrix, columns=tags)
+    matrix['item'] = tags
+    matrix = matrix.set_index('item')
+    return matrix
