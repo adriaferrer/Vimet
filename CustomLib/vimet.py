@@ -164,3 +164,49 @@ def items_for_you(df, similar_users, main_user):
         return items
     else:
         return 'There is nothing to recommend'
+
+
+def food_group(item):
+    # We create a dicitonary classifying all the items
+    dict_tags = {'Dulces': ['Obleas', 'Chocolate'],
+                 'Patata': ['Patata'],
+                 'Carne roja': ['Ternera', 'Confit', 'Magret', 'Vaca', 'Filet', 'Solomillo', 'Entrecot'],
+                 'Carne procesada': ['Jamón', 'Croquetas', 'Bull', 'Lasagna', 'Chorizo', 'Sumaia', 'salchichón',
+                                     'Mortadela', 'Albóndigas', 'Librito', 'Butifarra', 'Salchichas', 'Canelones',
+                                     'Fuet', 'Espectec', 'Sobrasada', 'Bull'],
+                 'Carne blanca': ['Pollo', 'Pavo', 'Conejo', 'Cerdo', 'Codorniz', 'Costillas'],
+                 'Pescado': ['Mero', 'Bonito', 'Merluza', 'Salmón', 'Dorada', 'Mejillón', 'Lubina', 'Calamar', 'Sepia',
+                             'Caballa', 'Lenguado', 'Almejas', 'Rape', 'Salmonetes', 'Boquerones', 'Berberechos',
+                             'Atun',
+                             'Gamba', 'Sardina', 'Pescadilla'],
+                 'Huevos': ['Huevos', 'Revuelto', 'Tortilla'],
+                 'Legumbres': ['Garbanzo', 'Lenteja', 'Judía', 'Montgeta', 'Alubia', 'Frijoles', 'Azuki', 'Hummus'],
+                 'Lácteos': ['Queso', 'Yogures'],
+                 'Especias': ['Eneldo', 'Ajo', 'Picantón'],
+                 'Frutos secos': ['Nuez', 'Almendra', 'Macadamia', 'Avellana', 'Cacahuetes', 'Pasa', 'Dátiles',
+                                  'Anacardo', 'Pistacho', 'Orejones'],
+                 'Frutas': ['Plátano', 'Manzana', 'Fresón', 'Naranja', 'Pera', 'Kiwi', 'Paraguayo', 'Mango',
+                            'Chirimoya',
+                            'Kakis', 'Ciruela', 'Mandarina', 'Melocotón', 'Piña', 'Arándanos', 'Limón', 'Bananas',
+                            'Albaricoque', 'Granada', 'Higos', 'Cerezas', 'Frambuesas', 'Sandía', 'Nectarina', 'Pomelo',
+                            'Uva', 'Melón', 'Paraguayo'],
+                 'Verduras': ['Tomate', 'Cebolla', 'Calabacín', 'Zanahoria', 'Pimiento', 'Aguacate', 'Brócoli',
+                              'Lechuga',
+                              'Berenjena', 'Calçots', 'Escarola', 'Cogollos', 'Calabaza', 'Acelgas', 'Espinacas',
+                              'Puerro',
+                              'Endivias', 'Rúcula', 'Alcachofa', 'Esparrago', 'Pepino', 'Canónigos', 'Ensalada',
+                              'Coliflor',
+                              'Col', 'Apio'],
+                 'Cereales': ['Granola', 'Soja', 'Mijo', 'Avena', 'Quinoa', 'Arroz', 'Pan', 'Macarrones', 'Pasta',
+                              'Spaghetti', 'Cous-cous', 'Espaguetis'],
+                 'Aceite': ['Aceite'],
+                 'Others': ['Cep', 'Agua', 'Salsa', 'Girgola', 'Champiñón', 'Caldo', 'Shiitake', 'Rossinyol', 'Others',
+                            'Cesta']}
+
+    # We reverse (keys for values), the dictionary so that we can easily assign it to a new series.
+    dict_tags2 = {}
+
+    for key, values in dict_tags.items():
+        for value in values:
+            dict_tags2[value] = key
+    return dict_tags2[item]
