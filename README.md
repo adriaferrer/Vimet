@@ -88,7 +88,7 @@ Three main steps will follow in paralel:
 * Creation of a ML model.
 
 **Data Flow**
-![Alter text](https://github.com/adriaferrer/Vimet/blob/master/DataFlow.png)
+![Alter text](https://github.com/adriaferrer/Vimet/blob/master/DataFlow2.png)
 
 1) **Descriptive statistics**: In order to provide context for the analysis, a descriptive study will be performed on the data to identify the best-selling products, evolution of sales, etc.
 
