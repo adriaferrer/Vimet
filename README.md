@@ -23,13 +23,12 @@ Vimet (https://casavimet.com/) brings the Mediterranean Diet to your kitchen ass
 Vimet has been up and running for almost a year now and after around 200 orders and 50 clients, they would like to answer some questions with the data collected during this time.
 
 * Is there any item combination that maximises sales?
-Recommender ML model
+
 * If we run out of an item, what should be the substitute?
-Recommender ML model
 
 All of these questions can be answered with the available data. The main potential issue will be the low amount of data as we only have around 200 orders and 50 clients.
 
-Success will be defined if any of the 2 questions have a statistically significant answer and/or a decision-making tool can be defined (e.g. descriptive data on best combinations of products)
+Success will be defined if both models can provide significant answer and/or a decision-making tool can be defined (e.g. descriptive data on best combinations of products)
 
 ### Data Preparation
 We will work with 2 datasets:
@@ -93,29 +92,30 @@ Three main steps will follow in paralel:
 
 1) **Descriptive statistics**: In order to provide context for the analysis, a descriptive study will be performed on the data to identify the best-selling products, evolution of sales, etc.
 
-2) **ML model**: A clustering model will be trained and tested to cluster the type of customers.
+2) **Recommender**: Two recommender models will be designed to recommend new products to customers and substitute products for orders.
 
 ### Data Analysis
 
 #### Descriptive statistics
-* Document each step of your data exploration and analysis.
-* Print charts to demonstrate the effect of your work. Charts make your presentation look good too.
+We have described the items and the orders separately first and then the combined data.
+* **Items:** we checked the distribution of the numerical features, identified the main providers and items bought and checked that, generally, the customers follow a mediterranean food distribution.
+* **Orders:** we also checked the distribution and the (non)correlation of the numerical features. We also described the percentages of paid and fulfilled orders. Additionally we mapped where the orders are delivered.
 
-#### Hypothesis testing
-* Overview the general steps you will go through to analyze your data in order to test your hypothesis.
+#### Recommender
+**Similar customers:** We defined the similarity of customers based on the items bought historically based on a defined cosine distance matrix. This allowed to identify potential items a customer could buy that have never bought before.
+**Substitutive items:** We identified items that never go toghether in an order (thus, substitutive) using a cosine distance matrix between items. We can now provide items that can potentially substitute others that are in the same food group (e.g. vegetables).
 
-#### ML model
-* If you use ML in your final project, also describe your feature selection process.
-
-### Model Training and Evaluation
-* Train your ML model, produce results, and evaluate.
-* This is an iterative process. Try your best to improve your model performance by:
-  * Try different models and select one that is the simplest yet produce the best result.
-  * Try advanced techniques and see if they improve the result.
+### Evaluation
+The evaluation of the model will be done in next steps using real customers to validate the recommendations. Also the group of nutricionists of Vimet will validate the recommendations for substitutive items.
 
 ### Conclusion
-* Summarize your data analysis result.
-* State your conclusion of your hypothesis testing.
-* Interpret your findings in terms of the human-understandable question you try to answer.
+* This analysis provided the first steps to implement data analytics in Vimet.
+* When (and if) the company grows the potential for more effective decision-making is significant as it can automatize several processes and minimize costs as delivery areas can be predicted and expensive product can be substituted by cheaper products.
 
 ### What are the next steps?
+* Validation with real customers
+* Scriptd to production
+* Further automatization of ETL
+* Auto shopping list: from nutricionist "menu" to list of items to buy in the market.
+* Demand forecast
+* Trying Vimet!
